@@ -1,0 +1,114 @@
+"set nocursorline " don't highlight current line
+set cursorline " highlight the current line
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ben's customizations
+
+" Make tabs convert into spaces, indent is 2 spaces by default
+set softtabstop=2
+set shiftwidth=2
+set tabstop=2
+set autoindent
+
+" Spacing/tab overrides for various languages
+autocmd Filetype h setlocal softtabstop=2 shiftwidth=2 tabstop=2
+autocmd Filetype hpp setlocal softtabstop=2 shiftwidth=2 tabstop=2
+autocmd Filetype cpp setlocal softtabstop=2 shiftwidth=2 tabstop=2
+autocmd Filetype py setlocal softtabstop=4 shiftwidth=4 tabstop=4
+autocmd Filetype rs setlocal softtabstop=4 shiftwidth=4 tabstop=4
+autocmd Filetype rust setlocal softtabstop=4 shiftwidth=4 tabstop=4
+autocmd Filetype go setlocal softtabstop=8 shiftwidth=8 tabstop=8 expandtab!
+
+" Highlight the 81st column
+set textwidth=80
+set colorcolumn=+1
+
+" Highlight search results
+set hlsearch
+" And highlight them while typing
+set incsearch
+
+" Show matching brackets
+set showmatch
+
+" Refresh unmodified files after external write
+set autoread
+
+" The screen will not be redrawn while executing macros, registers
+" and other commands that have not been typed.
+set lazyredraw
+
+" Helper function to strip trailing whitespace
+function! StripTrailingWhitespace()
+  if !&binary && &filetype != 'diff'
+      normal mz
+      normal Hmy
+      %s/\s\+$//e
+      normal 'yz<CR>
+      normal `z
+  endif
+endfunction
+
+" Always remove trailing whitespace on save
+autocmd BufWrite * :call StripTrailingWhitespace()
+command StripWS call StripTrailingWhitespace()
+
+" Enable Powerline for VIM
+source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
+set laststatus=2
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12 "Inconsolata\ for\ Powerline:h15
+let g:Powerline_symbols = 'fancy'
+set encoding=utf-8
+set t_Co=256
+set fillchars+=stl:\ ,stlnc:\
+set term=xterm-256color
+set termencoding=utf-8
+
+" Ignore pyc files in NERDTree
+let NERDTreeIgnore = ['\.pyc$']
+
+" Enable pylint for syntastic syntax checker
+let g:syntastic_python_checkers = ['pylint']
+
+" When Vim encrypts files it should use blowfish
+set cryptmethod=blowfish
+
+" Enhanced cmd line completion
+set wildmenu
+
+" Stuff to ignore during cmd line completion
+set wildignore+=*/vendor/*,*.swp,*.pyx
+
+" End Ben's customizations!
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" keyboard shortcuts
+inoremap jj <ESC>
+
+" highlight search
+"set hlsearch
+"nmap <leader>hl :let @/ = ""<CR>
+
+" gui settings
+if (&t_Co == 256 || has('gui_running'))
+  if ($TERM_PROGRAM == 'iTerm.app')
+    colorscheme solarized
+  else
+    colorscheme desert
+  endif
+endif
+
+" Disambiguate ,a & ,t from the Align plugin, making them fast again.
+"
+" This section is here to prevent AlignMaps from adding a bunch of mappings
+" that interfere with the very-common ,a and ,t mappings. This will get run
+" at every startup to remove the AlignMaps for the *next* vim startup.
+"
+" If you do want the AlignMaps mappings, remove this section, remove
+" ~/.vim/bundle/Align, and re-run rake in maximum-awesome.
+function! s:RemoveConflictingAlignMaps()
+  if exists("g:loaded_AlignMapsPlugin")
+    AlignMapsClean
+  endif
+endfunction
+command! -nargs=0 RemoveConflictingAlignMaps call s:RemoveConflictingAlignMaps()
+silent! autocmd VimEnter * RemoveConflictingAlignMaps

@@ -1,0 +1,18 @@
+[alias]
+	snake = ! /Users/bgoldberg/.snakegit/vendor/python/bin/snake
+[user]
+	name = Benjamin Goldberg
+	email = bgoldberg@narrativescience.com
+[merge]
+	tool = kdiff3
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[core]
+	excludesfile = /Users/bgoldberg/.gitignore_global
+[diff]
+	tool = bcomp
+[difftool]
+  tool = bcomp
+[mergetool "bcomp"]
+  path = /usr/local/bin/bcomp

@@ -1,0 +1,13 @@
+# Add powerline
+source /usr/local/lib/python2.7/site-packages/powerline/bindings/tmux/powerline.conf
+
+# Install tmux-resurrect
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+
+# Restore sessions for vim
+set -g @resurrect-strategy-vim 'session'
+# Restore sessions for neovim
+set -g @resurrect-strategy-nvim 'session'
+
+bind -n WheelUpPane   select-pane -t= \; copy-mode -e \; send-keys -M
+bind -n WheelDownPane select-pane -t= \;                 send-keys -M
