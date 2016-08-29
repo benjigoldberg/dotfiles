@@ -106,9 +106,6 @@ syspip(){
    PIP_REQUIRE_VIRTUALENV="" pip "$@"
 }
 
-# Source Private Narrative Science Variables for Vagrant
-source ~/.ns_env.sh
-
 # Vi shortcuts in the terminal
 set -o vi
 
@@ -116,29 +113,19 @@ function activate {
   . vendor/python/bin/activate
 }
 
-function pg_start {
-  pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
-}
-
-function pg_stop {
-  pg_ctl -D /usr/local/var/postgres stop -s -m fast
-}
-
 function rm-filetype {
   find . -name \*.$@ -delete
 }
-
-export NVM_DIR=~/.nvm
 
 export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PYENV_ROOT/bin:$PATH
 eval "$(pyenv init -)"
 
-source ~/.nvm/nvm.sh
+source /usr/local/opt/nvm/nvm.sh
 
 export NVM_DIR="$HOME/.nvm"
 
-export PATH=/Applications/Postgres.app/Contents/Versions/9.5/bin/:$PATH
+export PATH=/Applications/Postgres.app/Contents/Versions/9.4/bin/:$PATH
 
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 

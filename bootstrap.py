@@ -31,12 +31,6 @@ try:
 except OSError:
     logging.info('Workspace directory ({}) already exists.'.format(workspace))
 
-# Install Xcode command line tools
-shell_command(['xcode-select', '--install'])
-
-# Wait for user to confirm completion of Xcode tools installation
-raw_input('Press any key to continue once Xcode tools install has completed.')
-
 # Install maximum-awesome (homebrew, vim, tmux, solaris iterm settings, etc)
 logging.info('Installing maximum-awesome (Homebrew/Vim/tmux/iTerm2 support).')
 os.chdir('{}'.format(workspace))
@@ -56,8 +50,8 @@ logging.info(
     'mongodb, packer, graphviz, kdiff3, wget, htop, and zsh')
 shell_command([
     'brew', 'install', 'postgresql', 'python3', 'python', 'node', 'go',
-    'nginx', 'redis', 'tree', 'vim', 'mongodb', 'packer', 'graphviz', 'kdiff3',
-    'wget', 'zsh', 'htop'])
+    'nginx', 'redis', 'tree', 'vim', 'mongodb', 'graphviz', 'wget',  'tmux',
+    'zsh', 'htop', 'pyenv', 'nvm', 'Caskroom/cask/kdiff3'])
 
 # Install CoffeeScript, Bower, Grunt, and Gulp
 logging.info('Installing CoffeeScript, Bower, Grunt, and Gulp')
@@ -71,17 +65,6 @@ shell_command(['pip', 'install', '-U', 'pip'])
 # Install LSI and psutil
 logging.info('Installing LSI, psutil, and pylint')
 shell_command(['pip', 'install', 'lsi', 'psutil', 'pylint'])
-
-# Install Nix
-logging.info('Installing Nix')
-shell_command([
-     'wget', '-O', '/tmp/nix_installer.sh', 'https://nixos.org/nix/install'])
-shell_command(['sh', '/tmp/nix_installer.sh'])
-nix_path ='{}/.nix-profile/etc/profile.d/nix.sh'.format(home_path)
-
-shell_command(['sh', nix_path])
-shell_command(['nix-channel', '--update'])
-shell_command(['nix-env', '-iA', 'nixpkgs.nix-repl'])
 
 # Install Oh My Zsh
 logging.info('Installing Oh My Zsh')
