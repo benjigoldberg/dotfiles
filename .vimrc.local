@@ -10,16 +10,30 @@ set tabstop=2
 set autoindent
 
 " Spacing/tab overrides for various languages
+autocmd Filetype java setlocal softtabstop=2 shiftwidth=2 tabstop=2
+autocmd Filetype proto setlocal softtabstop=2 shiftwidth=2 tabstop=2
 autocmd Filetype h setlocal softtabstop=2 shiftwidth=2 tabstop=2
 autocmd Filetype hpp setlocal softtabstop=2 shiftwidth=2 tabstop=2
 autocmd Filetype cpp setlocal softtabstop=2 shiftwidth=2 tabstop=2
 autocmd Filetype py setlocal softtabstop=4 shiftwidth=4 tabstop=4
 autocmd Filetype rs setlocal softtabstop=4 shiftwidth=4 tabstop=4
 autocmd Filetype rust setlocal softtabstop=4 shiftwidth=4 tabstop=4
-autocmd Filetype go setlocal softtabstop=8 shiftwidth=8 tabstop=8 expandtab!
+autocmd Filetype go setlocal softtabstop=4 shiftwidth=4 tabstop=4 noexpandtab
+
+" Syntastic for cpp
+let g:syntastic_cpp_checkers = ['clang_check', 'gcc', 'cppcheck']
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = '-std=c++17 -Wall -Wextra -Wpedantic'
+let g:syntastic_cpp_check_header = 1
+
+" Syntastic for golang
+let g:syntastic_go_checkers = ['golint', 'govet', 'gometalinter']
+let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:go_list_type = "quickfix"
 
 " Highlight the 81st column
-set textwidth=80
+set textwidth=99
 set colorcolumn=+1
 
 " Highlight search results
@@ -53,7 +67,7 @@ autocmd BufWrite * :call StripTrailingWhitespace()
 command StripWS call StripTrailingWhitespace()
 
 " Enable Powerline for VIM
-source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
+"source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
 set laststatus=2
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12 "Inconsolata\ for\ Powerline:h15
 let g:Powerline_symbols = 'fancy'
