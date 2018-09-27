@@ -1,8 +1,6 @@
-[alias]
-	snake = ! /Users/bgoldberg/.snakegit/vendor/python/bin/snake
 [user]
 	name = Benjamin Goldberg
-	email = bgoldberg@narrativescience.com
+	email = fndrplayer13@gmail.com
 [merge]
 	tool = kdiff3
 [filter "media"]
@@ -13,6 +11,6 @@
 [diff]
 	tool = bcomp
 [difftool]
-  tool = bcomp
+	tool = bcomp
 [mergetool "bcomp"]
-  path = /usr/local/bin/bcomp
+	path = /usr/local/bin/bcomp
