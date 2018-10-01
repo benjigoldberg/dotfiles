@@ -46,17 +46,12 @@ shell_command(['brew', 'update'])
 # Install PostgreSQL, Python, Node, Go, Nginx, redis, tree, vim, mongodb,
 # packer, graphviz, wget, kdiff3, htop, and zsh
 logging.info(
-    'Installing PostgreSQL, Python, Node, Go, Nginx, redis, tree, vim, '
-    'mongodb, packer, graphviz, kdiff3, wget, htop, and zsh')
+    'Installing Python, Node, Go, Nginx, redis, tree, vim, '
+    'graphviz, kdiff3, wget, htop, rg, jq, and zsh')
 shell_command([
-    'brew', 'install', 'postgresql', 'python3', 'python', 'node', 'go',
-    'nginx', 'redis', 'tree', 'vim', 'mongodb', 'graphviz', 'wget',  'tmux',
-    'zsh', 'htop', 'pyenv', 'nvm', 'Caskroom/cask/kdiff3'])
-
-# Install CoffeeScript, Bower, Grunt, and Gulp
-logging.info('Installing CoffeeScript, Bower, Grunt, and Gulp')
-shell_command([
-    'npm', 'install', '-g', 'coffee-script', 'bower', 'grunt', 'gulp'])
+    'brew', 'install', 'python3', 'python', 'node', 'go',
+    'nginx', 'redis', 'tree', 'vim', 'graphviz', 'wget',  'tmux',
+    'zsh', 'htop', 'pyenv', 'nvm', 'Caskroom/cask/kdiff3', 'rg', 'jq'])
 
 # Upgrade PIP
 logging.info('Upgrading Pip')

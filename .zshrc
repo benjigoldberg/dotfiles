@@ -109,6 +109,10 @@ syspip(){
 # Vi shortcuts in the terminal
 set -o vi
 
+# Reverse search
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+
 function activate {
   . vendor/python/bin/activate
 }
@@ -131,3 +135,15 @@ export PATH=/Applications/Postgres.app/Contents/Versions/9.4/bin/:$PATH
 
 # Iterm2 integration
 source ~/.iterm2_shell_integration.`basename $SHELL`
+
+function cdgo {
+  cd $GOPATH
+}
+
+function cdav {
+  cd $GOPATH/src/github.com/spothero/availability
+}
+
+function cdsh {
+  cd $GOPATH/src/github.com/spothero
+}
