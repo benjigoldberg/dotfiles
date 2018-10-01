@@ -11,8 +11,8 @@
 [diff]
 	tool = bcomp
 [difftool]
-  tool = bcomp
+	tool = bcomp
 [mergetool "bcomp"]
-  path = /usr/local/bin/bcomp
+	path = /usr/local/bin/bcomp
 [url "git@github.com:"]
 	insteadOf = https://github.com/
