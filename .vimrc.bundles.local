@@ -1,1 +1,2 @@
 Plugin 'derekwyatt/vim-scala'
+Plugin 'fatih/vim-go'

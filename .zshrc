@@ -147,3 +147,7 @@ function cdav {
 function cdsh {
   cd $GOPATH/src/github.com/spothero
 }
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/bgoldberg/.sdkman"
+[[ -s "/Users/bgoldberg/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/bgoldberg/.sdkman/bin/sdkman-init.sh"

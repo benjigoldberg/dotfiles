@@ -3,6 +3,9 @@ set cursorline " highlight the current line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ben's customizations
 
+" Use fuzzyfinder
+set rtp+=/usr/local/opt/fzf
+
 " Make tabs convert into spaces, indent is 2 spaces by default
 set softtabstop=2
 set shiftwidth=2
