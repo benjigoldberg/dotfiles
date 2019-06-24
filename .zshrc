@@ -148,6 +148,9 @@ function cdsh {
   cd $GOPATH/src/github.com/spothero
 }
 
+alias kc=kubectl
+alias ksql-cli="docker run -it confluentinc/cp-ksql-cli"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/bgoldberg/.sdkman"
 [[ -s "/Users/bgoldberg/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/bgoldberg/.sdkman/bin/sdkman-init.sh"
